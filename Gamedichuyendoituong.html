@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamedichuyendoituong</title>
+</head>
+<body>
+<div id="game"></div>
+<script>
+    function Pikachu(image, top, left, speed, size) {
+        this.image=image;
+        this.top=top;
+        this.left=left;
+        this.size=size;
+        this.speed=speed;
+
+        this.getPikachuElement = function(){
+            return '<img width="'+ this.size + '"' +
+                ' height="'+ this.size + '"' +
+                ' src="' + this.image +'"' +
+                ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" alt=""/>';
+        };
+        this.getMove=function () {
+
+            if(this.top === 20){
+                this.left+=this.speed;
+            }
+            else if(this.left === 700){
+                this.top+=this.speed;
+            }
+            else if(this.top === 700){
+                this.left-=this.speed;
+            }
+            else if (this.left===20) {
+                this.top-=this.speed;
+            }
+        }
+    }
+    let pikachu= new Pikachu("pikachu.png",20,20,20,200);
+    console.log(pikachu);
+    setInterval(function () {
+        document.getElementById("game").innerHTML= pikachu.getPikachuElement();
+        pikachu.getMove();
+    },50)
+</script>
+
+</body>
+</html>
